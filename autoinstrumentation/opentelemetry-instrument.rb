@@ -10,6 +10,8 @@ if !ENV['_'].include?('bundle') || ENV['RUBYOPT'].include?('-rbundler/setup')
   $LOAD_PATH.append(*gem_paths)
 
   # We need to make sure libraries have been required before enabling instrumentation.
+  # But then the app doesn't start for some reason.
+  # Comment out this line and the app will start, but instrumentation will fail.
   Bundler.require(:default)
 
   require 'opentelemetry/sdk'
